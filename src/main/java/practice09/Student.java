@@ -11,16 +11,24 @@ public class Student extends Person {
         super(id, name, age);
         this.klass = klass;
     }
-    public Klass getKlass(){
+
+    public Klass getKlass() {
         return klass;
     }
 
-    public int getKlassNum(){return klass.getNumber();}
+    public int getKlassNum() {
+        return klass.getNumber();
+    }
 
-    public String introduce(){
-        String ifLeader = " I am a Student. I am Leader of ";
-        String ifNotLeader = " I am a Student. I am at ";
-        return  this.klass.getLeader() != null ? super.introduce() + ifLeader + klass.getDisplayName() + "." : super.introduce() + ifNotLeader + klass.getDisplayName() + ".";
+    public String introduce() {
+        String mainString = super.introduce();
+        String ifLeader = " I am a Student. I am Leader of " + klass.getDisplayName() + ".";
+        String ifNotLeader = " I am a Student. I am at " + klass.getDisplayName() + ".";
+        return this.klass.getLeader() != null ? mainString + ifLeader : mainString + ifNotLeader;
+    }
+
+    public void setKlass(Klass klass) {
+        this.klass = klass;
     }
 }
 
