@@ -1,13 +1,15 @@
 package practice09;
 
 public class Klass {
-    Integer number;
-    Student klassLeader;
+    private Integer number;
+    private Student klassLeader;
 
     public Klass(Integer number) {
         this.number = number;
     }
-    public Klass() {}
+
+    public Klass() {
+    }
 
     public Integer getNumber() {
         return number;
@@ -21,14 +23,17 @@ public class Klass {
         return klassLeader;
     }
 
+    // Todo : check should_class_not_assign_a_student_as_leader_when_student_is_not_a_member
     public void assignLeader(Student studentLeader) {
-        if(this.number == studentLeader.getKlass().getNumber()) {
+        if (this.number.equals(studentLeader.getKlass().getNumber())) {
             this.klassLeader = studentLeader;
-        }else{ System.out.print("It is not one of us.\n");}
+        } else {
+            System.out.print("It is not one of us.\n");
+        }
     }
 
-    public void appendMember(Student student){
-
+    public void appendMember(Student student) {
+        student.setKlass(this);
     }
 
 }
