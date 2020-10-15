@@ -1,7 +1,8 @@
 package practice09;
 
-public class Teacher extends Person{
-    Klass klass = new Klass();
+public class Teacher extends Person {
+    private Klass klass = new Klass();
+
     public Teacher(int id, String name, int age) {
         super(id, name, age);
     }
@@ -11,24 +12,25 @@ public class Teacher extends Person{
         this.klass = klass;
     }
 
-    public Klass getKlass(){
+    public Klass getKlass() {
         return klass;
     }
-    public Integer getKlassNum(){
+
+    private Integer getKlassNum() {
         return klass.getNumber();
     }
 
-    public String introduce(){
-        String mainString = super.introduce() +" "+  "I am a Teacher. ";
-        String hasClass =  "I teach Class " + getKlass().getNumber() + ".";
+    public String introduce() {
+        String mainString = super.introduce() + " " + "I am a Teacher. ";
+        String hasClass = "I teach Class " + getKlassNum() + ".";
         String noClass = "I teach No Class.";
-        return  getKlass().getNumber() != null ? mainString + hasClass : mainString + noClass;
+        return getKlassNum() != null ? mainString + hasClass : mainString + noClass;
     }
 
-    public String introduceWith(Student studentName){
-        String mainString = super.introduce() +" "+  "I am a Teacher. ";
-        String inClass =  "I teach " + studentName.getName() + ".";
-        String notInClass = "I don't teach " + studentName.getName()  + ".";
-        return klass.getNumber() == studentName.getKlassNum() ? mainString + inClass : mainString + notInClass;
+    public String introduceWith(Student studentName) {
+        String mainString = super.introduce() + " " + "I am a Teacher. ";
+        String inClass = "I teach " + studentName.getName() + ".";
+        String notInClass = "I don't teach " + studentName.getName() + ".";
+        return getKlassNum() == studentName.getKlassNum() ? mainString + inClass : mainString + notInClass;
     }
 }
